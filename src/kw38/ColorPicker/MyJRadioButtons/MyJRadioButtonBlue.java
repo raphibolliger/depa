@@ -14,22 +14,25 @@ public class MyJRadioButtonBlue extends JRadioButton implements Observer, MouseL
     public MyJRadioButtonBlue(String color)
     {
         super(color);
-        this.addMouseListener(this);
+        addMouseListener(this);
     }
 
     @Override
     public void update(Observable o, Object arg)
     {
-        if (ColorDefinition.colorRed == 0 && ColorDefinition.colorBlue == 255 && ColorDefinition.colorGreen == 0)
+        if (ColorDefinition.colorRed == 0 & ColorDefinition.colorBlue == 255 & ColorDefinition.colorGreen == 0)
             this.setSelected(true);
         else
-            GUI.radioGroup.clearSelection();
+            this.setSelected(false);
     }
 
     @Override
     public void mouseClicked(MouseEvent e)
     {
-
+        ColorDefinition.colorRed = 0;
+        ColorDefinition.colorGreen = 0;
+        ColorDefinition.colorBlue = 255;
+        GUI.manager.colorChanger();
     }
 
     @Override

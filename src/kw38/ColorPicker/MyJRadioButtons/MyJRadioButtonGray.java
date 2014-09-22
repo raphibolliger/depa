@@ -9,20 +9,29 @@ import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MyJRadioButtonRed extends JRadioButton implements Observer, MouseListener {
+public class MyJRadioButtonGray extends JRadioButton implements Observer, MouseListener {
 
-    public MyJRadioButtonRed(String color)
+    public MyJRadioButtonGray(String text)
     {
-        super(color);
+        super(text);
         addMouseListener(this);
+    }
+
+    @Override
+    public void update(Observable o, Object arg)
+    {
+        if (ColorDefinition.colorRed == 190 && ColorDefinition.colorBlue == 190 && ColorDefinition.colorGreen == 190)
+            this.setSelected(true);
+        else
+            this.setSelected(false);
     }
 
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        ColorDefinition.colorRed = 255;
-        ColorDefinition.colorGreen = 0;
-        ColorDefinition.colorBlue = 0;
+        ColorDefinition.colorRed = 190;
+        ColorDefinition.colorGreen = 190;
+        ColorDefinition.colorBlue = 190;
         GUI.manager.colorChanger();
     }
 
@@ -48,14 +57,5 @@ public class MyJRadioButtonRed extends JRadioButton implements Observer, MouseLi
     public void mouseExited(MouseEvent e)
     {
 
-    }
-
-    @Override
-    public void update(Observable o, Object arg)
-    {
-        if (ColorDefinition.colorRed == 255 && ColorDefinition.colorBlue == 0 && ColorDefinition.colorGreen == 0)
-            this.setSelected(true);
-        else
-            this.setSelected(false);
     }
 }

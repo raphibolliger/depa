@@ -1,7 +1,8 @@
 package kw38.ColorPicker;
 
 import kw38.ColorPicker.MyJPanelColorFields.MyJPanelColorField;
-import kw38.ColorPicker.MyJRadioButtons.MyJRadioButtonRed;
+import kw38.ColorPicker.MyJRadioButtonMenuItems.MyJRadioButtonMenuItemRed;
+import kw38.ColorPicker.MyJRadioButtons.*;
 import kw38.ColorPicker.MyJScrollbars.MyJScrollBarBlue;
 import kw38.ColorPicker.MyJScrollbars.MyJScrollBarGreen;
 import kw38.ColorPicker.MyJScrollbars.MyJScrollBarRed;
@@ -14,11 +15,20 @@ import kw38.ColorPicker.MyJTextFieldNums.MyJTextFieldNumRed;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
 
     // Menu Bar
     private JMenuBar menuBar = new JMenuBar();
+
+    // Menu Bar Items
+    private JMenu fileMenu = new JMenu("File");
+    private JMenu attributesMenu = new JMenu("Attributes");
+
+    // FileMenu Items
+    private JMenuItem exitItem = new JMenuItem("Exit");
 
     // Panels
     private JPanel topPanel = new JPanel();
@@ -38,13 +48,15 @@ public class GUI extends JFrame {
     private MyJTextFieldHexBlue blueHexText = new MyJTextFieldHexBlue();
 
     private MyJRadioButtonRed redRadio = new MyJRadioButtonRed("red");
-    private MyJRadioButton blueRadio = new MyJRadioButton("blue");
-    private MyJRadioButton greenRadio = new MyJRadioButton("green");
-    private MyJRadioButton yellowRadio = new MyJRadioButton("yellow");
-    private MyJRadioButton cyanRadio = new MyJRadioButton("cyan");
-    private MyJRadioButton orangeRadio = new MyJRadioButton("orange");
-    private MyJRadioButton blackRadio = new MyJRadioButton("black");
-    private MyJRadioButton greyRadio = new MyJRadioButton("grey");
+    private MyJRadioButtonBlue blueRadio = new MyJRadioButtonBlue("blue");
+    private MyJRadioButtonGreen greenRadio = new MyJRadioButtonGreen("green");
+    private MyJRadioButtonYellow yellowRadio = new MyJRadioButtonYellow("yellow");
+    private MyJRadioButtonCyan cyanRadio = new MyJRadioButtonCyan("cyan");
+    private MyJRadioButtonOrange orangeRadio = new MyJRadioButtonOrange("orange");
+    private MyJRadioButtonBlack blackRadio = new MyJRadioButtonBlack("black");
+    private MyJRadioButtonGray greyRadio = new MyJRadioButtonGray("grey");
+
+    private MyJRadioButtonMenuItemRed menuRadioRed = new MyJRadioButtonMenuItemRed("red");
 
     private MyJButton darkerButton = new MyJButton("Darker", 0);
     private MyJButton brighterButton = new MyJButton("Brighter", 1);
@@ -52,7 +64,6 @@ public class GUI extends JFrame {
     private MyJPanelColorField colorField = new MyJPanelColorField();
 
     public static NotificationManager manager;
-    public static ButtonGroup radioGroup = new ButtonGroup();
 
 
     public GUI()
@@ -61,6 +72,22 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         manager = new NotificationManager();
+
+        // JMenubar File
+        exitItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.exit(0);
+            }
+        });
+        fileMenu.add(exitItem);
+        menuBar.add(fileMenu);
+
+        attributesMenu.add(menuRadioRed);
+        menuBar.add(attributesMenu);
+
+        this.setJMenuBar(menuBar);
 
         this.setLayout(new BorderLayout());
 
@@ -84,15 +111,6 @@ public class GUI extends JFrame {
 
         JPanel radioButtonsPanel = new JPanel();
         radioButtonsPanel.setLayout(new GridLayout(8,1));
-
-        radioGroup.add(redRadio);
-        radioGroup.add(blueRadio);
-        radioGroup.add(greenRadio);
-        radioGroup.add(yellowRadio);
-        radioGroup.add(cyanRadio);
-        radioGroup.add(orangeRadio);
-        radioGroup.add(blackRadio);
-        radioGroup.add(greyRadio);
 
         radioButtonsPanel.add(redRadio);
         radioButtonsPanel.add(blueRadio);
