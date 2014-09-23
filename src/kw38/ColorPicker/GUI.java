@@ -1,6 +1,8 @@
 package kw38.ColorPicker;
 
 import kw38.ColorPicker.MyJPanelColorFields.MyJPanelColorField;
+import kw38.ColorPicker.MyJRadioButtonMenuItems.MyJRadioButtonMenuItemBlue;
+import kw38.ColorPicker.MyJRadioButtonMenuItems.MyJRadioButtonMenuItemGreen;
 import kw38.ColorPicker.MyJRadioButtonMenuItems.MyJRadioButtonMenuItemRed;
 import kw38.ColorPicker.MyJRadioButtons.*;
 import kw38.ColorPicker.MyJScrollbars.MyJScrollBarBlue;
@@ -57,6 +59,8 @@ public class GUI extends JFrame {
     private MyJRadioButtonGray greyRadio = new MyJRadioButtonGray("grey");
 
     private MyJRadioButtonMenuItemRed menuRadioRed = new MyJRadioButtonMenuItemRed("red");
+    private MyJRadioButtonMenuItemGreen menuRadioGreen = new MyJRadioButtonMenuItemGreen("green");
+    private MyJRadioButtonMenuItemBlue menuRadioBlue = new MyJRadioButtonMenuItemBlue("blue");
 
     private MyJButton darkerButton = new MyJButton("Darker", 0);
     private MyJButton brighterButton = new MyJButton("Brighter", 1);
@@ -85,6 +89,8 @@ public class GUI extends JFrame {
         menuBar.add(fileMenu);
 
         attributesMenu.add(menuRadioRed);
+        attributesMenu.add(menuRadioGreen);
+        attributesMenu.add(menuRadioBlue);
         menuBar.add(attributesMenu);
 
         this.setJMenuBar(menuBar);

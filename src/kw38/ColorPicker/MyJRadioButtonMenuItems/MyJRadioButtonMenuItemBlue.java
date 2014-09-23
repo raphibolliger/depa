@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MyJRadioButtonMenuItemRed extends JRadioButtonMenuItem implements Observer, ActionListener {
+public class MyJRadioButtonMenuItemBlue extends JRadioButtonMenuItem implements Observer, ActionListener {
 
-    public MyJRadioButtonMenuItemRed(String text)
+    public MyJRadioButtonMenuItemBlue(String text)
     {
         super(text);
         addActionListener(this);
@@ -20,7 +20,7 @@ public class MyJRadioButtonMenuItemRed extends JRadioButtonMenuItem implements O
     @Override
     public void update(Observable o, Object arg)
     {
-        if (ColorDefinition.colorRed == 255 && ColorDefinition.colorBlue == 0 && ColorDefinition.colorGreen == 0)
+        if (ColorDefinition.colorRed == 0 && ColorDefinition.colorBlue == 255 && ColorDefinition.colorGreen == 0)
             this.setSelected(true);
         else
             this.setSelected(false);
@@ -29,10 +29,9 @@ public class MyJRadioButtonMenuItemRed extends JRadioButtonMenuItem implements O
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        ColorDefinition.colorRed = 255;
+        ColorDefinition.colorRed = 0;
         ColorDefinition.colorGreen = 0;
-        ColorDefinition.colorBlue = 0;
+        ColorDefinition.colorBlue = 255;
         GUI.manager.colorChanger();
     }
-
 }
