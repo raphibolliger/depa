@@ -8,6 +8,9 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="junit-4.11" level="project" />
+    <orderEntry type="library" name="commons-logging" level="project" />
+    <orderEntry type="library" name="spring-beans" level="project" />
+    <orderEntry type="library" name="spring-context" level="project" />
+    <orderEntry type="library" name="spring-core" level="project" />
   </component>
 </module>
-
